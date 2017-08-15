@@ -150,21 +150,12 @@ class ParticleSystem {
 	}	
 	
 	// TODO: change function to return Void
-    public function update() : Bool {
-        var currentTime = Scheduler.time();
+    public function update(dt : Float) : Bool {
 
         if (prevTime < 0.0) {
-            prevTime = currentTime;
+            prevTime = 0;
             return false;
         }
-
-        var dt = currentTime - prevTime;
-
-        if (dt < 0.0001) {
-            return false;
-        }
-
-        prevTime = currentTime;
 
         if (active && emissionFreq > 0.0) {
             emitCounter += dt;
